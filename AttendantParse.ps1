@@ -1,9 +1,11 @@
 # sitename for your PureConnect environment
 $sitename = ''
+# the host name of your primary CIC server
+$servername
 # name of the node type from attendant you want to retrieve ('Play Info', 'Subroutine Initiator', etc)
 $nodetype = ''
 
-$attpath = "HKLM:\SOFTWARE\WOW6432Node\Interactive Intelligence\EIC\Directory Services\Root\$($sitename)\Production\ITWVOICECICDEVE\AttendantData\Attendant\"
+$attpath = "HKLM:\SOFTWARE\WOW6432Node\Interactive Intelligence\EIC\Directory Services\Root\$($sitename)\Production\$($servername)\AttendantData\Attendant\"
 
 $keys = Get-ChildItem -recurse $attpath | Get-ItemProperty | where { $_.Type -match $nodetype }
 
